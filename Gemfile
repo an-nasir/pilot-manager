@@ -19,6 +19,7 @@ gem 'pry'
 gem 'sneakers'
 
 gem 'bunny'
+gem 'webpacker'
 gem 'rubocop-rails', require: false
 
 group :development, :test do
