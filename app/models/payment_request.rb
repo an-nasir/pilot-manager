@@ -10,6 +10,6 @@ class PaymentRequest < ApplicationRecord
   private
 
   def update_status
-    ManagerPublisher.publish({status: :accepted, id: emp_payment_request_id, from: 'MANAGER'})
+    ManagerPublisher.publish({ status: :accepted, id: emp_payment_request_id, from: 'MANAGER' })
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ConsumerService
   attr_accessor :mq_connection, :channel
 
@@ -16,15 +18,15 @@ class ConsumerService
 
   def consume_message(queue)
     # begin
-      # manual_ack: as we used prefetch, manual acknowledgment
-      # If ack not received RabbitMQ will re-queue it
-      msg = nil
-      queue.subscribe(manual_ack: true, block: false) do |delivery_info, _properties, payload|
-        channel.ack(delivery_info.delivery_tag)
-        msg = payload
-        # close_connection
-      end
-      return msg
+    # manual_ack: as we used prefetch, manual acknowledgment
+    # If ack not received RabbitMQ will re-queue it
+    msg = nil
+    queue.subscribe(manual_ack: true, block: false) do |delivery_info, _properties, payload|
+      channel.ack(delivery_info.delivery_tag)
+      msg = payload
+      # close_connection
+    end
+    msg
     # rescue Interrupt => _e
     #   close_connection
     # end

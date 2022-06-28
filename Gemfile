@@ -19,8 +19,8 @@ gem 'pry'
 gem 'sneakers'
 
 gem 'bunny'
-gem 'webpacker'
 gem 'rubocop-rails', require: false
+gem 'webpacker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
