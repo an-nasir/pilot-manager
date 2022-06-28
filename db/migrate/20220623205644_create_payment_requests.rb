@@ -8,6 +8,7 @@ class CreatePaymentRequests < ActiveRecord::Migration[6.1]
       t.decimal :amount, precision: 8, scale: 2
       t.string :currency
       t.integer :status
+      t.integer :emp_payment_request_id
       t.timestamps
     end
   end

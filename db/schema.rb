@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_06_23_205644) do
     t.decimal "amount", precision: 8, scale: 2
     t.string "currency"
     t.integer "status"
+    t.integer "emp_payment_request_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -13,8 +13,9 @@
   </thead>
 
   <tbody>
-    <% @payment_requests.each do |payment_request| %>
+    <% @payment_requests.each_with_index do |payment_request, index| %>
       <tr>
+        <td><%= index %></td>
         <td><%= payment_request.amount %></td>
         <td><%= payment_request.currency %></td>
         <td><%= payment_request.status %></td>

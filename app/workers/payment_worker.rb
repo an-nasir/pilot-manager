@@ -1,16 +1,15 @@
 # manager/app/workers/payment_workers.rb
 class PaymentWorker
   include Sneakers::Worker
-  from_queue 'manager.payment_requests', env: nil
+  from_queue('producer_queue')
 
   def work(payment_request)
-    puts '*' * 100
-    payment_request_params = JSON.parse payment_request
-    p payment_request_params
-    puts '*' * 100
-
+    payment_request_params = JSON.parse(payment_request, {symbolize_names: true})
+    payment_request_params[:emp_payment_request_id] = payment_request_params.delete :id
     PaymentRequest.create(payment_request_params)
     # request is received in queue
     ack!
   end
 end
+
+
