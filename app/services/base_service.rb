@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# acts as base bunny connection and channel
+# connection start etc
+#
 class BaseService
   attr_accessor :connection, :channel, :default_queue
 
