@@ -5,32 +5,6 @@ class EmpManagersController < ApplicationController
   before_action :set_emp_manager, only: %i[show edit update destroy]
   before_action :set_payment_request, only: %i[accept_payment reject_payment]
 
-  # GET /emp_managers
-  def index
-    @emp_managers = EmpManager.all
-  end
-
-  # GET /emp_managers/1
-  def show; end
-
-  # GET /emp_managers/new
-  def new
-    @emp_manager = EmpManager.new
-  end
-
-  # GET /emp_managers/1/edit
-  def edit; end
-
-  # POST /emp_managers
-  def create
-    @emp_manager = EmpManager.new(emp_manager_params)
-
-    if @emp_manager.save
-      redirect_to @emp_manager, notice: 'Emp manager was successfully created.'
-    else
-      render :new
-    end
-  end
 
   # PUT accepts payment request
   def accept_payment
@@ -42,21 +16,6 @@ class EmpManagersController < ApplicationController
   def reject_payment
     ManagerPublisher.publish({ status: :rejected, id: @payment_request.emp_payment_request_id })
     redirect_to root_path, notice: 'Rejected'
-  end
-
-  # PATCH/PUT /emp_managers/1
-  def update
-    if @emp_manager.update(emp_manager_params)
-      redirect_to @emp_manager, notice: 'Emp manager was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /emp_managers/1
-  def destroy
-    @emp_manager.destroy
-    redirect_to emp_managers_url, notice: 'Emp manager was successfully destroyed.'
   end
 
   private
